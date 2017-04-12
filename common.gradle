@@ -1,0 +1,22 @@
+sourceSets {
+  sim {
+    compileClasspath += main.output
+  }
+}
+task simJar(type: Jar, dependsOn: simClasses) {
+  classifier = 'sim'
+  from sourceSets.sim.output
+}
+
+configurations {
+  simCompile.extendsFrom runtime
+  sim.extendsFrom simRuntime
+}
+
+project.artifacts {
+  sim simJar
+}
+
+task release(dependsOn: [assemble, "simJar"], group:"build") {
+  // Build zip release etc...
+}

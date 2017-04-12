@@ -1,0 +1,14 @@
+apply plugin: 'java'
+apply plugin: 'application'
+apply from: '../common.gradle'
+
+mainClassName="App"
+
+repositories {
+  flatDir name: "libs", dirs: "libs"
+}
+
+dependencies {
+  compile group: "not-used-in-flatdir", name: "base"
+  simCompile group: "not-used-in-flatdir", name: "base", classifier: "sim"
+}
