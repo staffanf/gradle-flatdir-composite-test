@@ -1,1 +1,9 @@
 rootProject.name = 'app'
+
+includeBuild("../base") {
+  dependencySubstitution {
+    substitute module('not-used-in-flatdir:base') with project(':')
+    //Would like to have something like or another way to solve this
+    //substitute module('not-used-in-flatdir:base:sim') with project(path:':base', configuration:"sim" )
+  }
+}
